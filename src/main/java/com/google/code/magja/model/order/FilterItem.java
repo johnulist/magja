@@ -6,7 +6,7 @@ package com.google.code.magja.model.order;
 
 import java.io.Serializable;
 
-public class OrderFilterItem implements Serializable {
+public class FilterItem implements Serializable {
 
 	private static final long serialVersionUID=7897091919944931829L;
 
@@ -14,9 +14,15 @@ public class OrderFilterItem implements Serializable {
 
 	private String operator; // example: like
 
-	private String value;
+	private Object value;
 
-	public OrderFilterItem(String property, String operator, String value) {
+	public FilterItem(String property, String operator, String value) {
+		this.property = property;
+		this.operator = operator;
+		this.value = value;
+	}
+
+	public FilterItem(String property, String operator, String[] value) {
 		this.property = property;
 		this.operator = operator;
 		this.value = value;
@@ -53,7 +59,7 @@ public class OrderFilterItem implements Serializable {
 	/**
 	 * @return the value
 	 */
-	public String getValue() {
+	public Object getValue() {
 		return value;
 	}
 
@@ -61,6 +67,13 @@ public class OrderFilterItem implements Serializable {
 	 * @param value the value to set
 	 */
 	public void setValue(String value) {
+		this.value = value;
+	}
+
+	/**
+	 * @param value the value to set
+	 */
+	public void setValue(String[] value) {
 		this.value = value;
 	}
 
@@ -90,7 +103,7 @@ public class OrderFilterItem implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		OrderFilterItem other = (OrderFilterItem) obj;
+		FilterItem other = (FilterItem) obj;
 		if (operator == null) {
 			if (other.operator != null)
 				return false;
@@ -114,7 +127,7 @@ public class OrderFilterItem implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "OrderFilterItem [operator=" + operator + ", property="
+		return "FilterItem [operator=" + operator + ", property="
 				+ property + ", value=" + value + "]";
 	}
 

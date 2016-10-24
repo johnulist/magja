@@ -62,11 +62,15 @@ public class Order extends BaseMagentoModel {
 
 	private Boolean customerIsGuest;
 
+	private String customerEmail;
+
 	private Customer customer = new Customer();
 
 	private OrderAddress billingAddress = new OrderAddress();
 
 	private OrderAddress shippingAddress = new OrderAddress();
+
+	private OrderPayment orderPayment = new OrderPayment();
 
 	private List<OrderItem> items = new ArrayList<OrderItem>();
 
@@ -411,6 +415,21 @@ public class Order extends BaseMagentoModel {
 	}
 
 	/**
+	 * @return the customerEmail
+	 */
+	public String getCustomerEmail() {
+		return customerEmail;
+	}
+
+	/**
+	 * @param customerEmail
+	 *            the customerEmail to set
+	 */
+	public void setCustomerEmail(String customerEmail) {
+		this.customerEmail = customerEmail;
+	}
+
+	/**
 	 * @return the customer
 	 */
 	public Customer getCustomer() {
@@ -453,6 +472,21 @@ public class Order extends BaseMagentoModel {
 	 */
 	public void setShippingAddress(OrderAddress shippingAddress) {
 		this.shippingAddress = shippingAddress;
+	}
+
+	/**
+	 * @return the orderPayment
+	 */
+	public OrderPayment getOrderPayment() {
+		return orderPayment;
+	}
+
+	/**
+	 * @param orderPayment
+	 *            the orderPayment to set
+	 */
+	public void setOrderPayment(OrderPayment orderPayment) {
+		this.orderPayment = orderPayment;
 	}
 
 	/**
@@ -504,6 +538,8 @@ public class Order extends BaseMagentoModel {
 
         if (billingAddress != null ? !billingAddress.equals(order.billingAddress) : order.billingAddress != null)
             return false;
+		if (orderPayment != null ? !orderPayment.equals(order.orderPayment) : order.orderPayment != null)
+			return false;
         if (customer != null ? !customer.equals(order.customer) : order.customer != null) return false;
         if (customerIsGuest != null ? !customerIsGuest.equals(order.customerIsGuest) : order.customerIsGuest != null)
             return false;
@@ -529,7 +565,9 @@ public class Order extends BaseMagentoModel {
             return false;
         if (shippingTaxRefunded != null ? !shippingTaxRefunded.equals(order.shippingTaxRefunded) : order.shippingTaxRefunded != null)
             return false;
-        if (state != null ? !state.equals(order.state) : order.state != null) return false;
+		if (customerEmail != null ? !customerEmail.equals(order.customerEmail) : order.customerEmail != null)
+			return false;
+		if (state != null ? !state.equals(order.state) : order.state != null) return false;
         if (status != null ? !status.equals(order.status) : order.status != null) return false;
         if (storeName != null ? !storeName.equals(order.storeName) : order.storeName != null) return false;
         if (subtotal != null ? !subtotal.equals(order.subtotal) : order.subtotal != null) return false;
@@ -576,9 +614,11 @@ public class Order extends BaseMagentoModel {
             ", shippingTaxRefunded=" + shippingTaxRefunded +
             ", weight=" + weight +
             ", emailSent=" + emailSent +
+            ", customerEmail=" + customerEmail +
             ", customerIsGuest=" + customerIsGuest +
             ", customer=" + customer +
             ", billingAddress=" + billingAddress +
+			", orderPayment=" + orderPayment +
             ", shippingAddress=" + shippingAddress +
             ", items=" + items +
             '}';

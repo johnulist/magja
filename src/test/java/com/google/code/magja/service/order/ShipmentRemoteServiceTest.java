@@ -13,6 +13,7 @@ import com.google.code.magja.model.order.ShipmentItem;
 import com.google.code.magja.model.order.ShipmentTrack;
 import com.google.code.magja.service.RemoteServiceFactory;
 import com.google.code.magja.service.ServiceException;
+import com.google.code.magja.model.order.Filter;
 
 /**
  * @author andre
@@ -66,7 +67,7 @@ public class ShipmentRemoteServiceTest {
 	}
 
 	/**
-	 * Test method for {@link com.google.code.magja.service.order.ShipmentRemoteServiceImpl#list(java.lang.String)}.
+	 * Test method for {@link com.google.code.magja.service.order.ShipmentRemoteServiceImpl#list(Filter)}.
 	 */
 	@Test
 	public void testList() {
@@ -118,6 +119,14 @@ public class ShipmentRemoteServiceTest {
 	 */
 	@Test
 	public void testGetCarriers() {
+		//fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link com.google.code.magja.service.order.ShipmentRemoteServiceImpl#sendInfo(com.google.code.magja.model.order.Shipment, java.lang.String)}.
+	 */
+	@Test
+	public void testSendInfo() {
 		//fail("Not yet implemented"); // TODO
 	}
 
